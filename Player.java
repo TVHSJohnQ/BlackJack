@@ -1,20 +1,40 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player
 {
     private String name;
-    private double money;
+    private int money;
     private ArrayList<Card> hand = new ArrayList<>();
 
-    public Player(String name)
+    public Player(String name, int money)
     {
         this.name = name;
-        this.money = 100;
+        this.money = money;
     }
 
-    public void playTurn()
+    public void playTurn(Deck deck)
     {
-        //do stuff
+        while(true)
+        {
+            Scanner input = new Scanner(System.in);
+            String action;
+            System.out.println("Hit or Stand?");
+            action = input.nextLine();
+            if(action == "h")
+            {
+                hit(deck);
+            }
+            else if(action == "s")
+            {
+                return;
+            }
+            else
+            {
+                System.out.println("Press h to hit and press s to stand!");
+            }
+
+        }
     }
 
     public void hit(Deck deck)
@@ -32,5 +52,15 @@ public class Player
     public void getCard(Deck deck)
     {
         //do stuff
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+    
+    public int getMoney()
+    {
+        return money;
     }
 }

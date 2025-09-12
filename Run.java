@@ -1,10 +1,13 @@
 public class Run {
     public static void main(String[] args) {
         Deck deck = new Deck();
+        Player player = new Player("Griffin",100);
 
-        for(Card card : deck.getCards())
-        {
-            System.out.println(card);
-        }
+        player.playTurn(deck);
+
+        // for(Card card : deck.getCards())
+        // {
+            
+        // }
     }
 }

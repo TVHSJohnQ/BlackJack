@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Player
 {
     private String name;
@@ -24,6 +25,7 @@ public class Player
             if(action == "h")
             {
                 hit(deck);
+                System.out.println("BOOM!!");
             }
             else if(action == "s")
             {
@@ -45,8 +47,20 @@ public class Player
 
     public int getHandValue()
     {
-        //do stuff
-        return 1;
+        int hand_value = 0;
+        for(int c = 0; c < hand.size(); c++)
+        {
+            Card current_card = hand.get(c);
+            if(current_card.get_face() == "A")
+            {
+                System.out.println("A!!");
+            }
+            else
+            {
+                hand_value += current_card.get_value();
+            }
+        }
+        return hand_value;
     }
 
     public void getCard(Deck deck)

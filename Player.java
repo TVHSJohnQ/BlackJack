@@ -20,14 +20,15 @@ public class Player
         {
             Scanner input = new Scanner(System.in);
             String action;
+
             System.out.println("Hit or Stand?");
             action = input.nextLine();
-            if(action == "h")
+            if(action.equals("h"))
             {
                 hit(deck);
-                System.out.println("BOOM!!");
+                System.out.println(getHandValue());
             }
-            else if(action == "s")
+            else if(action.equals("s"))
             {
                 return;
             }
@@ -51,9 +52,9 @@ public class Player
         for(int c = 0; c < hand.size(); c++)
         {
             Card current_card = hand.get(c);
-            if(current_card.get_face() == "A")
+            if(current_card.get_face().equals("A"))
             {
-                System.out.println("A!!");
+                //!!!!!!!!!!!!!!!!!!!!!!!
             }
             else
             {

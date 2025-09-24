@@ -14,6 +14,8 @@ public class Player
         this.money = money;
     }
 
+    //-----------------------PLAY TURN--------------------------
+
     public void playTurn(Deck deck)
     {
         while(true)
@@ -27,6 +29,12 @@ public class Player
             {
                 hit(deck);
                 System.out.println(getHandValue());
+                // check if busted
+                if(has_busted(getHandValue()))
+                {
+                    System.out.println("BUSTED!!");
+                    return;
+                }
             }
             else if(action.equals("s"))
             {
@@ -40,33 +48,62 @@ public class Player
         }
     }
 
+    //-----------------------PLAY TURN END--------------------------
+
     public void hit(Deck deck)
     {
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
+        System.out.println(this.name + " pulled a "  + get_top_card());
     }
+
+    //-----------------------GET HAND VALUE--------------------------
 
     public int getHandValue()
     {
         int hand_value = 0;
+        int ace_count = 0;
+
         for(int c = 0; c < hand.size(); c++)
         {
             Card current_card = hand.get(c);
             if(current_card.get_face().equals("A"))
             {
-                //!!!!!!!!!!!!!!!!!!!!!!!
+                hand_value += 11;
+                ace_count += 1;
             }
             else
             {
                 hand_value += current_card.get_value();
             }
         }
+        while(hand_value > 21 && ace_count > 0)
+        {
+            hand_value -= 10;
+            ace_count -= 1;
+        }
         return hand_value;
     }
 
-    public void getCard(Deck deck)
+    //-----------------------GET HAND VALUE END--------------------------
+
+    public boolean has_busted(int hand_value)
     {
-        //do stuff
+        if(hand_value > 21)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public String get_top_card()
+    {
+        Card top_card = this.hand.get(this.hand.size() - 1);
+        // return top_card.get_value() + " of " + top_card.get_face();
+        return top_card.toString();
     }
 
     public String getName()

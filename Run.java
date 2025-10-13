@@ -8,15 +8,16 @@ public class Run {
         String action;
 
         Deck deck = new Deck();
-        ArrayList<Player> player_array = new ArrayList<>();
+        ArrayList<Player> player_array = new ArrayList<Player>();
 
 
         BigSpace.create_space();
+        // Player Creation
         while(true)
         {
 
             System.out.println("Players = " + player_array.size() + "/4");
-            System.out.println("(Create a new player? y/n)");
+            System.out.println("(Create a new player? y/n) or (Type start to Start)");
             action = input.nextLine();
 
             if(action.equals("y"))
@@ -39,9 +40,14 @@ public class Run {
             {
                 BigSpace.create_space();
                 System.out.println("Starting Game..");
-                return;
+                break;
             }
-            
+         
+        }
+
+        for(int t = 0; t < player_array.size(); t++)
+        {
+            System.out.println("ABA");
         }
 
     }

@@ -25,20 +25,25 @@ public class Player
 
             System.out.println("Hit or Stand?");
             action = input.nextLine();
-            if(action.equals("h"))
+            if(action.equals("h") || action.equals("hit"))
             {
                 hit(deck);
                 System.out.println(getHandValue());
                 // check if busted
                 if(has_busted(getHandValue()))
                 {
-                    System.out.println("BUSTED!!");
-                    return;
+                    BigSpace.create_space();
+                    System.out.println(name + " busted");
+                    System.out.println("-------------------");
+                    break;
                 }
             }
-            else if(action.equals("s"))
+            else if(action.equals("s") || action.equals("stand"))
             {
-                return;
+                BigSpace.create_space();
+                System.out.println(name + " stood");
+                System.out.println("-------------------");
+                break;
             }
             else
             {

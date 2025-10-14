@@ -47,8 +47,13 @@ public class Run {
 
         for(int t = 0; t < player_array.size(); t++)
         {
-            System.out.println("ABA");
+            Player current_player = player_array.get(t);
+            System.out.println(current_player.getName() + "'s turn");
+            System.out.println("-----------------------");
+            current_player.playTurn(deck);
         }
+
+        System.out.println("GAME OVER");
 
     }
 }

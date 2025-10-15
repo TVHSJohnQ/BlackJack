@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Run {
     public static void main(String[] args) {
@@ -20,7 +21,7 @@ public class Run {
             System.out.println("(Create a new player? y/n) or (Type start to Start)");
             action = input.nextLine();
 
-            if(action.equals("y"))
+            if(action.equals("y") && player_array.size() < 4)
             {
                 BigSpace.create_space();
                 System.out.print("What will you decree them?  (Enter * to return) ");
@@ -53,7 +54,18 @@ public class Run {
             current_player.playTurn(deck);
         }
 
-        System.out.println("GAME OVER");
+        BigSpace.create_space();
+        System.out.println("-----------------");
+        System.out.println("WINNERS:");
+        for(int p = 0; p < player_array.size(); p++)
+        {
+            Player current_player = player_array.get(p);
+            if(current_player.has_busted(current_player.getHandValue()) == false)
+            {
+                System.out.println(current_player.getName());
+            }
+        }
+
 
     }
 }

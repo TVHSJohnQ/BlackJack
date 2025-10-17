@@ -28,7 +28,7 @@ public class Player
             if(action.equals("h") || action.equals("hit"))
             {
                 hit(deck);
-                System.out.println(getHandValue());
+                System.out.println("Hand:" + getHandValue());
                 // check if busted
                 if(has_busted(getHandValue()))
                 {
@@ -41,12 +41,13 @@ public class Player
             else if(action.equals("s") || action.equals("stand"))
             {
                 BigSpace.create_space();
-                System.out.println(name + " stood");
+                System.out.println(name + " stood with a hand of " + getHandValue());
                 System.out.println("-------------------");
                 break;
             }
             else
             {
+                BigSpace.create_space();
                 System.out.println("Press h to hit and press s to stand!");
             }
 
@@ -57,6 +58,7 @@ public class Player
 
     public void hit(Deck deck)
     {
+        BigSpace.create_space();
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
         System.out.println(this.name + " pulled a "  + get_top_card());

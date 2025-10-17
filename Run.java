@@ -9,6 +9,7 @@ public class Run {
         String action;
 
         Deck deck = new Deck();
+        Dealer dealer_player = new Dealer();
         ArrayList<Player> player_array = new ArrayList<Player>();
 
 
@@ -52,6 +53,11 @@ public class Run {
             System.out.println(current_player.getName() + "'s turn");
             System.out.println("-----------------------");
             current_player.playTurn(deck);
+
+            BigSpace.create_space();
+            System.out.println("Dealers Turn ");
+            System.out.println("-----------------------");
+            dealer_player.dealer_turn(deck);
         }
 
         BigSpace.create_space();

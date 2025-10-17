@@ -2,9 +2,19 @@ public class Dealer extends Player
 {
     public Dealer()
     {
-        super("Robert",1000000000);
+        super("Dealer Danny",1000000);
 
-        
+
     }
+
+    public void dealer_turn(Deck deck)
+        {
+            while(getHandValue() < 17)
+            {
+                hit(deck);
+                System.out.println(getHandValue());
+
+            }
+        }
 
 }

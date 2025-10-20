@@ -56,59 +56,61 @@ public class Run {
 
 
             dealer_player.clear_hand();
-            dealer_player.hit(deck);
 
-            dealer_player.silent_hit(deck);
-            dealer_player.silent_hit(deck);
+            current_player.silent_hit(deck);
+            current_player.silent_hit(deck);
 
             System.out.println(current_player.getName() + "'s turn");
             System.out.println("-----------------------");
 
+            System.out.println(current_player.getName() + "'s balance: " + current_player.getMoney());
             System.out.println(current_player.getName() + ", how much would you like to bet?");
             double bet = input.nextDouble();
             input.nextLine();
 
-            if(current_player.getMoney() - bet <= 0)
-            {
-                System.out.println("You ran out of money, oh no!");
-                System.out.println("I gave you 10 dollars and set your bet to 5 just so you can keep playing, yay!");
-                bet = 5;
-            }
+            // if(current_player.getMoney() > 0)
+            // {
+
+            // }
+
+            BigSpace.create_space();
+            current_player.setMoney(current_player.getMoney() - bet);
+            System.out.println("Your balance is now " + current_player.getMoney() + " dollars");
+            System.out.println("-----------------------");
 
 
-
-
+            dealer_player.hit(deck);
             current_player.playTurn(deck);
 
-            // BigSpace.create_space();
             System.out.println("Dealers Turn ");
             System.out.println("-----------------------");
             dealer_player.dealer_turn(deck);
-            System.out.println("-----------------------");
             if (current_player.getHandValue() > dealer_player.getHandValue() && current_player.has_busted(current_player.getHandValue()) == false)
             {
                 System.out.println(current_player.getName() + " Won!");
+                if(current_player.getMoney() == 21)
+                {
+                    current_player.setMoney(current_player.getMoney() * 2);
+                }
+                else
+                {
+                    current_player.setMoney(current_player.getMoney() + bet);
+                }
+                System.out.println("-----------------------");
+
             }
             else
             {
                 System.out.println(dealer_player.getName() + " Won!");
+                current_player.setMoney(current_player.getMoney() - bet);
             }
-            return;
 
         }
 
-        BigSpace.create_space();
         System.out.println("-----------------");
-        System.out.println("WINNERS:");
-        for(int p = 0; p < player_array.size(); p++)
-        {
-            Player current_player = player_array.get(p);
-            if(current_player.has_busted(current_player.getHandValue()) == false)
-            {
-                System.out.println(current_player.getName());
-            }
-        }
-
+        action = input.nextLine();
+        System.out.println("New Game?");
 
     }
 }
+

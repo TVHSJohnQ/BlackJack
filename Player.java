@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Player
 {
     private String name;
-    private int money;
+    private double money;
     private ArrayList<Card> hand = new ArrayList<>();
 
     public Player(String name, int money)
@@ -20,16 +20,16 @@ public class Player
     {
         while(true)
         {
-            Scanner input = new Scanner(System.in);
+            Scanner hit_input = new Scanner(System.in);
             String action;
 
+            System.out.println(name + "'s Hand: " + getHandValue());
             System.out.println("Hit or Stand?");
-            action = input.nextLine();
+            action = hit_input.nextLine();
             if(action.equals("h") || action.equals("hit"))
             {
                 BigSpace.create_space();
                 hit(deck);
-                System.out.println(name + "'s Hand: " + getHandValue());
                 // check if busted
                 if(has_busted(getHandValue()))
                 {
@@ -129,8 +129,13 @@ public class Player
         return name;
     }
     
-    public int getMoney()
+    public double getMoney()
     {
         return money;
+    }
+
+    public void setMoney(double set_money)
+    {
+        money = set_money;
     }
 }

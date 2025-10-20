@@ -27,8 +27,9 @@ public class Player
             action = input.nextLine();
             if(action.equals("h") || action.equals("hit"))
             {
+                BigSpace.create_space();
                 hit(deck);
-                System.out.println("Hand:" + getHandValue());
+                System.out.println(name + "'s Hand: " + getHandValue());
                 // check if busted
                 if(has_busted(getHandValue()))
                 {
@@ -58,10 +59,15 @@ public class Player
 
     public void hit(Deck deck)
     {
-        BigSpace.create_space();
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
         System.out.println(this.name + " pulled a "  + get_top_card());
+    }
+
+    public void silent_hit(Deck deck)
+    {
+        Card newCard = deck.getTopCard();
+        this.hand.add(newCard);
     }
 
     //-----------------------GET HAND VALUE--------------------------
@@ -111,6 +117,11 @@ public class Player
         Card top_card = this.hand.get(this.hand.size() - 1);
         // return top_card.get_value() + " of " + top_card.get_face();
         return top_card.toString();
+    }
+
+    public void clear_hand()
+    {
+        hand.clear();
     }
 
     public String getName()

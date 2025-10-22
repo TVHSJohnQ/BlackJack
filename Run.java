@@ -108,6 +108,8 @@ public class Run {
                         System.out.println(dealer_player.getName() + " Won!");
                         current_player.setMoney(current_player.getMoney() - bet);
                     }
+
+                    current_player.clear_hand();
                 }
                 else if(current_player.getMoney() <= 0)
                 {

@@ -11,7 +11,7 @@ public class Dealer extends Player
         {
             while(getHandValue() < 17)
             {
-                hit(deck);
+                this.hit(deck);
                 System.out.println(getHandValue());
 
             }

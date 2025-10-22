@@ -68,6 +68,8 @@ public class Player
     {
         Card newCard = deck.getTopCard();
         this.hand.add(newCard);
+        System.out.println(newCard.get_face() + " " + newCard.get_value());
+
     }
 
     //-----------------------GET HAND VALUE--------------------------

@@ -18,11 +18,11 @@ public class Card
 
     public String get_face()
     {
-        return face;
+        return this.face;
     }
 
     public int get_value()
     {
-        return value;
+        return this.value;
     }
 }
